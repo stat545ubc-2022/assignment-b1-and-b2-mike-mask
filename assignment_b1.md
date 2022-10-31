@@ -73,8 +73,6 @@ This file contains my work for assignment B1 of STAT 545B.
 #' 
 #' @return this function outputs the summary of a linear model consisting of standardized criterion and predictor variables. Note that the criterion variable will appear as 'a' and the predictor variable will appear as 'b' in the summary output. 
 
-
-
 standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) { #creates function
   #Ensures criterion is numeric
   if(!is.numeric(criterion)) {
@@ -323,7 +321,7 @@ test_that("standardize_and_model_test_1", {
 })
 ```
 
-    ## Test passed 🎊
+    ## Test passed 🎉
 
 **Test 2**:
 
@@ -337,7 +335,7 @@ expect_error(standardize_and_model(criterion = gapminder$lifeExp, predictor = ga
 })
 ```
 
-    ## Test passed 🎊
+    ## Test passed 😸
 
 **Test 3**:
 
@@ -358,7 +356,7 @@ test_that("standardize_and_model_test_3", {
 })
 ```
 
-    ## Test passed 🎉
+    ## Test passed 😸
 
 # Conlusion
 
