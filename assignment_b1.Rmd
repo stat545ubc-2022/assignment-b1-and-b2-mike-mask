@@ -7,8 +7,7 @@ output:
         toc: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+```{r setup}
 library(tidyverse)
 library(testthat)
 library(gapminder)
@@ -16,25 +15,28 @@ library(palmerpenguins)
 library(ellipsis)
 ```
 
+# Introduction
+
+This file contains my work for assignment B1 of STAT 545B.
+
 # Exercises 1 and 2: Function and Documentation
 
 ```{r}
 
 #' Standardize and model numeric vectors
 #' 
-#' Standardizes two numeric vectors and automatically inputs the two vectors into a linear model 
+#' Standardizes two numeric vectors and inputs the two vectors into a linear model. Particularly useful for obtaining the standardized regression coefficient  of the predictor.
 #' 
-#' @param criterion the variable to be predicted (note: I named this argument 'criterion' because it will be the criterion in the linear model that this function creates)
+#' @param criterion the variable to be predicted; a numeric vector (note: I named this argument 'criterion' because it will be the criterion in the linear model that this function creates)
 #' 
-#' @param predictor the variable doing the predicting (note: I named this argument 'predictor' because it will be the predictor in the linear model that this function creates)
+#' @param predictor the variable doing the predicting; a numeric vector (note: I named this argument 'predictor' because it will be the predictor in the linear model that this function creates)
 #' 
-#' @return this function outputs the summary of a linear model consisting of standardized criterion and predictor variables
+#' @return this function outputs the summary of a linear model consisting of standardized criterion and predictor variables. Note that the criterion variable will appear as 'a' and the predictor variable will appear as 'b' in the summary output. 
 
 
 
-standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) {
+standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) { #creates function
   #Ensures criterion is numeric
-  ellipsis::check_dots_used()
   if(!is.numeric(criterion)) {
     stop("Sorry bud, your criterion is not numeric, it's a ", class(criterion))
   }
@@ -62,33 +64,33 @@ standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) {
 
 **Example 1**:
 
-The first example... DESCRIBE HERE and talk about output and comment code
+The first example illustrates the use of the function by standardizing the lifeExp variable as well as the gdpPercap variable from the `gapminder` dataset.I've set the criterion equal to the lifeExp variable and the predictor equal to the gdpPercap variable, which means that our function will standardize both these variables for us and then input them into a linear model with the predictor variable (gdpPercap) predicting the criterion variable (lifeExp). The output of the function is the summary of the linear model of this regression which handily provides us with useful things to know, including (but not limited to) the F-test of the overall model, the R-squared value for the model, as well as the standardized regression coefficient of the predictor variable and its associated t-test. For example, the standardized regression coefficient for the predictor (gdpPercap) is 0.58.
 
 ```{r}
-head(gapminder)
+head(gapminder) #calling head on gapminder data just to familiarize with the variables and overall data structure
 
-standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap)
+standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap) #using our new function, setting the criterion to lifeExp and predictor to gdpPercap to see if gdpPercap predicts lifeExp and obtain standardized regression coefficient etc
 ```
 
 **Example 2**:
 
-The second example... DESCRIBE HERE AND TALK ABOUT OUTPUT AND COMMENT CODE
+The second example illustrates the use of the function by predicting the body mass in grams (criterion) by the flipper length in mm (predictor) from the `penguins` dataset. The function standardizes these variables for us and inputs them into a linear model.The output of the function is the summary of the linear model of this regression which handily provides us with useful things to know, including (but not limited to) the F-test of the overall model, the R-squared value for the model, as well as the standardized regression coefficient of the predictor variable and its associated t-test. For example, the standardized regression coefficient for the predictor (flipper_length_mm) is 0.87.
 
 ```{r}
-head(penguins)
+head(penguins) #calling head on penguins data just to familiarize with the variables and overall data structure
 
-standardize_and_model(criterion = penguins$body_mass_g, predictor = penguins$flipper_length_mm)
+standardize_and_model(criterion = penguins$body_mass_g, predictor = penguins$flipper_length_mm) #using our new function by setting criterion to body_mass_g and predictor to flipper_length_mm to see if flipper length predicts body mass and obtain standardized regression coefficient etc
 
 ```
 
 **Example 3**:
 
-The third example... DESCRIBE HERE AND TALK ABOUT OUTPUT AND COMMENT CODE
+The third example illustrates the use of the function by setting the criterion to miles per gallon and the predictor to number of cylinders from the `mtcars` dataset. The function standardizes these variables for us and inputs them into a linear model. The output of the function is the summary of the linear model of this regression which handily provides us with useful things to know, including (but not limited to) the F-test of the overall model, the R-squared value for the model, as well as the standardized regression coefficient of the predictor variable and its associated t-test. For example, the standardized regression coefficient for the predictor, number of cylinders, is -0.85.
 
 ```{r}
-head(mtcars)
+head(mtcars) #calling head on mtcars data just to familiarize with the variables and overall data structure
 
-standardize_and_model(mtcars$mpg, mtcars$cyl)
+standardize_and_model(criterion = mtcars$mpg, predictor = mtcars$cyl) #using our new function, setting criterion to mpg and predictor to cyl to see if number of cylinders predicts miles per gallon and obtain standardized regression coefficient etc
 ```
 
 **Example 4**:
@@ -96,9 +98,9 @@ standardize_and_model(mtcars$mpg, mtcars$cyl)
 The fourth example demonstrates that when the criterion argument is not numeric (in this case it's a factor - the country) the function outputs an informative error message telling us that the criterion is not numeric, it's a factor.
 
 ```{r, error=TRUE}
-head(gapminder)
+head(gapminder) #calling head on gapminder data just to familiarize with the variables and overall data structure
 
-standardize_and_model(gapminder$country, gapminder$lifeExp)
+standardize_and_model(criterion = gapminder$country, predictor = gapminder$lifeExp) #using our new function setting criterion to country and predictor to lifeExp
 ```
 
 
@@ -107,46 +109,53 @@ standardize_and_model(gapminder$country, gapminder$lifeExp)
 The fifth example demonstrates that when the predictor argument is not numeric (in this case it's a factor - the country) the function outputs an informative error message telling us that the predictor is not numeric, it's a factor.
 
 ```{r, error=TRUE}
-head(gapminder)
+head(gapminder) #calling head on gapminder data just to familiarize with the variables and overall data structure
 
-standardize_and_model(gapminder$lifeExp, gapminder$country)
+standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$country) #using our new function to predict lifeExp from country
 ```
 
 # Exercise 4: Testing the Function
 
 **Test 1**:
 
+This useful test demonstrates that the output of our standardize_and_model function is in fact a "summary.lm" object (i.e., a summary of a linear model).
+
 ```{r}
-test_that("TYPE HERE", {
-expect_error(standardize_and_model(gapminder$lifeExp, gapminder$country), "Easy there, your predictor is not numeric, it's a factor")
+test_that("standardize_and_model_test_1", {
+  expect_is(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),
+            "summary.lm") #tests that the output of our function is a "summary.lm"; tests that what is on the left equals what is on the right
 })
 ```
 
 **Test 2**:
 
-```{r}
-a <- (gapminder$lifeExp - mean(gapminder$lifeExp))/sd(gapminder$lifeExp)
-b <- (gapminder$gdpPercap - mean(gapminder$gdpPercap))/sd(gapminder$gdpPercap)
+This useful test demonstrates that when the predictor is a factor and not a numeric vector, the function returns an informative error message telling the user that their predictor is not numeric, it's a factor.
 
-test_that("TYPE HERE", {
-  expect_equal(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),
-                   summary(lm(a ~ b)))
+```{r}
+test_that("standardize_and_model_test_2", {
+expect_error(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$country), "Easy there, your predictor is not numeric, it's a factor") #tests that when predictor is a factor the function reports an informative error message telling the user that the predictor is not numeric but is a factor
 })
 ```
 
 **Test 3**:
-PUT THIS ONE FIRST!!!!!!!!!!!!!!!!!
+
+This useful test demonstrates that if we go through the painstaking process of standardizing our variables by hand and inputting them into a linear model and calling summary on that model, the result is equal to the result of our function, showing that the function is correctly standardizing and inputting the variables into the linear model and producing the summary in the right way.
+
 ```{r}
-test_that("TYPE HERE", {
-  expect_is(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),
-            "summary.lm")
+a <- (gapminder$lifeExp - mean(gapminder$lifeExp))/sd(gapminder$lifeExp) #standardizes lifeExp by hand
+b <- (gapminder$gdpPercap - mean(gapminder$gdpPercap))/sd(gapminder$gdpPercap) #standardizes gdpPercap by hand
+
+test_that("standardize_and_model_test_3", {
+  expect_equal(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),
+                   summary(lm(a ~ b))) #tests that our function output (left) is equal to the output of standardizing and modelling the variables by hand (right)
 })
 ```
 
+# Conlusion
+
+Thanks for reading!
+
+:octocat:
 
 
-TO-DO LIST:
-README
-COMMENT CODE
-REVIEW
 
