@@ -5,7 +5,7 @@ This repository currently contains the files for assignment B1 in [STAT 545B](ht
 ## Contents
 1. README.md
 2. assignment_b1.Rmd
-3. 3. ADD .MD?!!?!?!??!?!
+3. assignment_b1.md
 
 ## File use
-This README file contains a broad overview of this repository. The assignment_b1.Rmd file contains the R code for the first assignment of STAT 545B; this code (1) creates and documents a function for standardizing and modelling numeric vectors, (2) provides several examples for how to use this new function and (3) contains tests to ensure the function is working correctly as anticipated. It is suggested to open the assignment_b1.Rmd file in RStudio for editing/updating. FOR YOUR CONVENIENCE I HAVE ALSO INCLUDED A .MD FILE TO EASILY VISUALIZE. 
+This README file contains a broad overview of this repository. The assignment_b1.Rmd file contains the R code for the first assignment of STAT 545B; this code (1) creates and documents a function for standardizing and modelling numeric vectors, (2) provides several examples for how to use this new function and (3) contains tests to ensure the function is working correctly as anticipated. It is suggested to open the assignment_b1.Rmd file in RStudio for editing/updating. **For the convenience of the TA who has to grade this, I have included an assignment_b1.md file which makes it easier to see what's going on in this assignment.**
