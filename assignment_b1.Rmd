@@ -42,9 +42,9 @@ standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) {
   if(!is.numeric(predictor)) {
     stop("Easy there, your predictor is not numeric, it's a ", class(predictor))
   }
-  #Standardizes criterion and stores it as a
+  #Standardizes criterion and stores it as 'a'
   a <- (criterion - mean(criterion, na.rm = remove_na, ...))/sd(criterion, na.rm = remove_na)
-  #Standardizes predictor and stores it as b
+  #Standardizes predictor and stores it as 'b'
   b <- (predictor - mean(predictor, na.rm = remove_na, ...))/sd(predictor, na.rm = remove_na)
   
   #Takes standardized variables and inputs into model object called c in which standardized criterion is being predicted by standardized predictor
