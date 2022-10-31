@@ -2,29 +2,85 @@
 title: "assignment_b1"
 author: "Mike Mask"
 date: "`r Sys.Date()`"
-output: github_document
+output: 
+    github_document:
+        toc: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(testthat)
+library(gapminder)
+library(palmerpenguins)
+library(ellipsis)
 ```
 
-## R Markdown
+# Exercises 1 and 2: Function and Documentation
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+```{r}
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+#' Standardize and model numeric vectors
+#' 
+#' Standardizes two numeric vectors and automatically inputs the two vectors into a linear model 
+#' 
+#' @param criterion the variable to be predicted (note: I named this argument 'criterion' because it will be the criterion in the linear model that this function creates)
+#' 
+#' @param predictor the variable doing the predicting (note: I named this argument 'predictor' because it will be the predictor in the linear model that this function creates)
+#' 
+#' @return this function outputs the summary of a linear model consisting of standardized criterion and predictor variables
 
-```{r cars}
-summary(cars)
+
+
+standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) {
+  #Ensures criterion is numeric
+  if(!is.numeric(criterion)) {
+    stop("Sorry bud, your criterion is not numeric, it's a ", class(criterion))
+  }
+  #Ensures predictor is numeric
+  if(!is.numeric(predictor)) {
+    stop("Easy there, your predictor is not numeric, it's a ", class(predictor))
+  }
+  #Standardizes criterion and stores it as a
+  a <- (criterion - mean(criterion, na.rm = remove_na, ...))/sd(criterion, na.rm = remove_na)
+  #Standardizes predictor and stores it as b
+  b <- (predictor - mean(predictor, na.rm = remove_na, ...))/sd(predictor, na.rm = remove_na)
+  
+  #Takes standardized variables and inputs into model object called c in which standardized criterion is being predicted by standardized predictor
+  
+  c <- lm(a ~ b)
+  
+  #Returns a summary of the model object
+  
+  return(summary(c))
+}
+
 ```
 
-## Including Plots
+# Exercise 3: Examples
 
-You can also embed plots, for example:
+**Example 1**:
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+The first example... DESCRIBE HERE and talk about output and comment code
+
+```{r}
+head(gapminder)
+
+standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap)
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+**Example 2**:
+
+The second example... DESCRIBE HERE AND TALK ABOUT OUTPUT AND COMMENT CODE
+
+```{r}
+head(penguins)
+
+standardize_and_model(criterion = penguins$body_mass_g, predictor = penguins$flipper_length_mm, trim=0.4)
+
+
+
+
+```
+
+
