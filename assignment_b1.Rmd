@@ -34,6 +34,7 @@ library(ellipsis)
 
 standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) {
   #Ensures criterion is numeric
+  ellipsis::check_dots_used()
   if(!is.numeric(criterion)) {
     stop("Sorry bud, your criterion is not numeric, it's a ", class(criterion))
   }
@@ -76,11 +77,76 @@ The second example... DESCRIBE HERE AND TALK ABOUT OUTPUT AND COMMENT CODE
 ```{r}
 head(penguins)
 
-standardize_and_model(criterion = penguins$body_mass_g, predictor = penguins$flipper_length_mm, trim=0.4)
-
-
-
+standardize_and_model(criterion = penguins$body_mass_g, predictor = penguins$flipper_length_mm)
 
 ```
 
+**Example 3**:
+
+The third example... DESCRIBE HERE AND TALK ABOUT OUTPUT AND COMMENT CODE
+
+```{r}
+head(mtcars)
+
+standardize_and_model(mtcars$mpg, mtcars$cyl)
+```
+
+**Example 4**:
+
+The fourth example demonstrates that when the criterion argument is not numeric (in this case it's a factor - the country) the function outputs an informative error message telling us that the criterion is not numeric, it's a factor.
+
+```{r, error=TRUE}
+head(gapminder)
+
+standardize_and_model(gapminder$country, gapminder$lifeExp)
+```
+
+
+**Example 5**:
+
+The fifth example demonstrates that when the predictor argument is not numeric (in this case it's a factor - the country) the function outputs an informative error message telling us that the predictor is not numeric, it's a factor.
+
+```{r, error=TRUE}
+head(gapminder)
+
+standardize_and_model(gapminder$lifeExp, gapminder$country)
+```
+
+# Exercise 4: Testing the Function
+
+**Test 1**:
+
+```{r}
+test_that("TYPE HERE", {
+expect_error(standardize_and_model(gapminder$lifeExp, gapminder$country), "Easy there, your predictor is not numeric, it's a factor")
+})
+```
+
+**Test 2**:
+
+```{r}
+a <- (gapminder$lifeExp - mean(gapminder$lifeExp))/sd(gapminder$lifeExp)
+b <- (gapminder$gdpPercap - mean(gapminder$gdpPercap))/sd(gapminder$gdpPercap)
+
+test_that("TYPE HERE", {
+  expect_equal(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),
+                   summary(lm(a ~ b)))
+})
+```
+
+**Test 3**:
+PUT THIS ONE FIRST!!!!!!!!!!!!!!!!!
+```{r}
+test_that("TYPE HERE", {
+  expect_is(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),
+            "summary.lm")
+})
+```
+
+
+
+TO-DO LIST:
+README
+COMMENT CODE
+REVIEW
 
