@@ -1,6 +1,5 @@
 # README for assignment-b1-and-b2-mike-mask repository
-This repository currently contains the files for [assignment B1](https://stat545.stat.ubc.ca/assignments/assignment-b1/) README for assignment-b1-and-b2-mike-mask repository
-This repository currently contains the files for assignment B1 in [STAT 545B](https://stat545.stat.ubc.ca/course/); in the future, it will also contain files for [assignment B2](https://stat545.stat.ubc.ca/assignments/assignment-b2/).
+This repository currently contains the files for [assignment B1](https://stat545.stat.ubc.ca/assignments/assignment-b1/) in [STAT 545B](https://stat545.stat.ubc.ca/course/); in the future, it will also contain files for [assignment B2](https://stat545.stat.ubc.ca/assignments/assignment-b2/).
 
 ## Contents
 1. README.md
