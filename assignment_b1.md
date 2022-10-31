@@ -103,10 +103,10 @@ standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) {
 
 The first example illustrates the use of the function by standardizing
 the lifeExp variable as well as the gdpPercap variable from the
-`gapminder` dataset.I’ve set the criterion equal to the lifeExp variable
-and the predictor equal to the gdpPercap variable, which means that our
-function will standardize both these variables for us and then input
-them into a linear model with the predictor variable (gdpPercap)
+`gapminder` dataset. I’ve set the criterion equal to the lifeExp
+variable and the predictor equal to the gdpPercap variable, which means
+that our function will standardize both these variables for us and then
+input them into a linear model with the predictor variable (gdpPercap)
 predicting the criterion variable (lifeExp). The output of the function
 is the summary of the linear model of this regression which handily
 provides us with useful things to know, including (but not limited to)
@@ -335,7 +335,7 @@ expect_error(standardize_and_model(criterion = gapminder$lifeExp, predictor = ga
 })
 ```
 
-    ## Test passed 🎊
+    ## Test passed 🌈
 
 **Test 3**:
 
@@ -356,7 +356,7 @@ test_that("standardize_and_model_test_3", {
 })
 ```
 
-    ## Test passed 🎉
+    ## Test passed 🌈
 
 # Conlusion
 
