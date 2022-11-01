@@ -31,6 +31,10 @@ This file contains my work for assignment B1 of STAT 545B.
 #' 
 #' @param predictor the variable doing the predicting; a numeric vector (note: I named this argument 'predictor' because it will be the predictor in the linear model that this function creates)
 #' 
+#' @param remove_na this is a logical that evaluates to TRUE or FALSE which will indicate if you want NA values to be removed from the analysis (I used the name remove_na because when set to TRUE, NA values will be removed so the name of the argument is self-explanatory)
+#' 
+#' @param ... this enables additional arguments to be passed to other functions within the function (I used the name ... because that is standard practice for the ellipsis argument)
+#' 
 #' @return this function outputs the summary of a linear model consisting of standardized criterion and predictor variables. Note that the criterion variable will appear as 'a' and the predictor variable will appear as 'b' in the summary output. 
 
 standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) { #creates function

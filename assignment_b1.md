@@ -1,7 +1,7 @@
 assignment_b1
 ================
 Mike Mask
-2022-10-31
+2022-11-01
 
 -   <a href="#introduction" id="toc-introduction">Introduction</a>
 -   <a href="#exercises-1-and-2-function-and-documentation"
@@ -70,6 +70,10 @@ This file contains my work for assignment B1 of STAT 545B.
 #' @param criterion the variable to be predicted; a numeric vector (note: I named this argument 'criterion' because it will be the criterion in the linear model that this function creates)
 #' 
 #' @param predictor the variable doing the predicting; a numeric vector (note: I named this argument 'predictor' because it will be the predictor in the linear model that this function creates)
+#' 
+#' @param remove_na this is a logical that evaluates to TRUE or FALSE which will indicate if you want NA values to be removed from the analysis (I used the name remove_na because when set to TRUE, NA values will be removed so the name of the argument is self-explanatory)
+#' 
+#' @param ... this enables additional arguments to be passed to other functions within the function (I used the name ... because that is standard practice for the ellipsis argument)
 #' 
 #' @return this function outputs the summary of a linear model consisting of standardized criterion and predictor variables. Note that the criterion variable will appear as 'a' and the predictor variable will appear as 'b' in the summary output. 
 
@@ -321,7 +325,7 @@ test_that("standardize_and_model_test_1", {
 })
 ```
 
-    ## Test passed 🎉
+    ## Test passed 🌈
 
 **Test 2**:
 
@@ -335,7 +339,7 @@ expect_error(standardize_and_model(criterion = gapminder$lifeExp, predictor = ga
 })
 ```
 
-    ## Test passed 🌈
+    ## Test passed 😀
 
 **Test 3**:
 
