@@ -325,7 +325,7 @@ test_that("standardize_and_model_test_1", {
 })
 ```
 
-    ## Test passed 🌈
+    ## Test passed 🥳
 
 **Test 2**:
 
@@ -339,7 +339,7 @@ expect_error(standardize_and_model(criterion = gapminder$lifeExp, predictor = ga
 })
 ```
 
-    ## Test passed 😀
+    ## Test passed 😸
 
 **Test 3**:
 
@@ -360,7 +360,7 @@ test_that("standardize_and_model_test_3", {
 })
 ```
 
-    ## Test passed 🌈
+    ## Test passed 🥇
 
 # Conlusion
 
