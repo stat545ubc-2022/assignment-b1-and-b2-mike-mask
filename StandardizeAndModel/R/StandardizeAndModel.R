@@ -24,13 +24,13 @@ standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) {
     stop("Easy there, your predictor is not numeric, it's a ", class(predictor))
   }
   #Standardizes criterion and stores it as 'a'
-  a <- (criterion - mean(criterion, na.rm = remove_na, ...))/sd(criterion, na.rm = remove_na)
+  a <- (criterion - mean(criterion, na.rm = remove_na, ...))/stats::sd(criterion, na.rm = remove_na)
   #Standardizes predictor and stores it as 'b'
-  b <- (predictor - mean(predictor, na.rm = remove_na, ...))/sd(predictor, na.rm = remove_na)
+  b <- (predictor - mean(predictor, na.rm = remove_na, ...))/stats::sd(predictor, na.rm = remove_na)
 
   #Takes standardized variables and inputs into model object called c in which standardized criterion is being predicted by standardized predictor
 
-  c <- lm(a ~ b)
+  c <- stats::lm(a ~ b)
 
   #Returns a summary of the model object
 
