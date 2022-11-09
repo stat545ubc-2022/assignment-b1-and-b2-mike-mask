@@ -1,3 +1,16 @@
+#' Standardize and model numeric vectors
+#'
+#' Standardizes two numeric vectors and inputs the two vectors into a linear model. Particularly useful for obtaining the standardized regression coefficient of the predictor.
+#'
+#' @param criterion
+#' @param predictor
+#' @param remove_na
+#' @param ...
+#'
+#' @return this function outputs the summary of a linear model consisting of standardized criterion and predictor variables. Note that the criterion variable will appear as 'a' and the predictor variable will appear as 'b' in the summary output.
+#' @export
+#'
+#' @examples
 standardize_and_model <- function(criterion, predictor, remove_na = TRUE, ...) { #creates function
   #Ensures criterion is numeric
   if(!is.numeric(criterion)) {

@@ -3,11 +3,8 @@ Title: Standardize and Model Numeric Vectors
 Version: 0.1.0
 Authors@R: 
     person("Mike", "Mask", , "mike.windek@gmail.com", role = c("aut", "cre"))
-Description: Standardizes two numeric vectors and inputs the two vectors into
-a linear model. Particularly useful for obtaining the standardized regression
-coefficient  of the predictor.
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: Standardizes two numeric vectors and inputs the two vectors into a linear model. Particularly useful for obtaining the standardized regression coefficient  of the predictor.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
