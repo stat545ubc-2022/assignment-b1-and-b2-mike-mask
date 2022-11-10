@@ -18,9 +18,13 @@ You can install the development version of StandardizeAndModel from
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("stat545ubc-2022/assignment-b1-and-b2-mike-mask/StandardizeAndModel")
-#> Skipping install of 'StandardizeAndModel' from a github remote, the SHA1 (a7862d9a) has not changed since last install.
-#>   Use `force = TRUE` to force installation
+devtools::install_github("stat545ubc-2022/assignment-b1-and-b2-mike-mask/StandardizeAndModel", ref = "0.1.0")
+#> Error: Failed to install 'unknown package' from GitHub:
+#>   HTTP error 404.
+#>   No commit found for the ref 0.1.0
+#> 
+#>   Did you spell the repo owner (`stat545ubc-2022`) and repo name (`assignment-b1-and-b2-mike-mask`) correctly?
+#>   - If spelling is correct, check that you have the required permissions to access the repo.
 ```
 
 ## Example 1
