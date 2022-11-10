@@ -8,5 +8,5 @@ test_that("standardize_and_model_test_2", {
 })
 
 test_that("standardize_and_model_test_3", {
-  expect_equal(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),x, ignore_attr = TRUE) #tests that our function output (left) is equal to the output of standardizing and modelling the variables by hand (right)
+  expect_equal(standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap),x, ignore_attr = TRUE) #tests that our function output (left) is equal to the output of standardizing and modelling the variables by hand (right), x is the stored model output of standardizing by hand and calling summary on the lm
 })

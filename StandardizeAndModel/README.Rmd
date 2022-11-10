@@ -1,0 +1,55 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# StandardizeAndModel
+
+<!-- badges: start -->
+<!-- badges: end -->
+
+The goal of StandardizeAndModel is to automatically standardize two numeric vectors and input the two vectors into a linear model. Particularly useful for obtaining the standardized regression coefficient  of the predictor.
+
+## Installation
+
+You can install the development version of StandardizeAndModel from [GitHub](https://github.com/) with:
+
+```{r}
+# install.packages("devtools")
+devtools::install_github("stat545ubc-2022/assignment-b1-and-b2-mike-mask/StandardizeAndModel")
+```
+
+## Example 1
+
+The first example illustrates the use of the function by standardizing the lifeExp variable as well as the gdpPercap variable from the gapminder dataset. I’ve set the criterion equal to the lifeExp variable and the predictor equal to the gdpPercap variable, which means that our function will standardize both these variables for us and then input them into a linear model with the predictor variable (gdpPercap) predicting the criterion variable (lifeExp). The output of the function is the summary of the linear model of this regression which handily provides us with useful things to know, including (but not limited to) the F-test of the overall model, the R-squared value for the model, as well as the standardized regression coefficient of the predictor variable and its associated t-test. For example, the standardized regression coefficient for the predictor (gdpPercap) is 0.58.
+
+```{r}
+standardize_and_model(criterion = gapminder$lifeExp, predictor = gapminder$gdpPercap) #using our new function, setting the criterion to lifeExp and predictor to gdpPercap to see if gdpPercap predicts lifeExp and obtain standardized regression coefficient etc
+```
+
+## Example 2
+
+The second example illustrates the use of the function by predicting the body mass in grams (criterion) by the flipper length in mm (predictor) from the penguins dataset. The function standardizes these variables for us and inputs them into a linear model.The output of the function is the summary of the linear model of this regression which handily provides us with useful things to know, including (but not limited to) the F-test of the overall model, the R-squared value for the model, as well as the standardized regression coefficient of the predictor variable and its associated t-test. For example, the standardized regression coefficient for the predictor (flipper_length_mm) is 0.87.
+
+```{r}
+standardize_and_model(criterion = penguins$body_mass_g, predictor = penguins$flipper_length_mm) #using our new function by setting criterion to body_mass_g and predictor to flipper_length_mm to see if flipper length predicts body mass and obtain standardized regression coefficient etc
+```
+
+## Example 3
+
+The third example illustrates the use of the function by setting the criterion to miles per gallon and the predictor to number of cylinders from the mtcars dataset. The function standardizes these variables for us and inputs them into a linear model. The output of the function is the summary of the linear model of this regression which handily provides us with useful things to know, including (but not limited to) the F-test of the overall model, the R-squared value for the model, as well as the standardized regression coefficient of the predictor variable and its associated t-test. For example, the standardized regression coefficient for the predictor, number of cylinders, is -0.85.
+
+```{r}
+standardize_and_model(criterion = mtcars$mpg, predictor = mtcars$cyl) #using our new function, setting criterion to mpg and predictor to cyl to see if number of cylinders predicts miles per gallon and obtain standardized regression coefficient etc
+```
+
